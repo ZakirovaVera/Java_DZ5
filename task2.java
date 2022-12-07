@@ -1,7 +1,10 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 // Пусть дан список сотрудников:Иван Иванов ( и остальные, полный текст дз будет на
 // платформе)
@@ -13,18 +16,15 @@ public class task2 {
     static List<String> dataEmployees = new ArrayList<>();
 
     public static void main(String[] args) {
+        dataEmployees.add("Иванов");
         dataEmployees.add("Сидоров");
         dataEmployees.add("Сидоров");
         dataEmployees.add("Петров");
         dataEmployees.add("Иванов");
-        dataEmployees.add("Иванов");
         dataEmployees.add("Сидоров");
 
         CalcCountRepeats();
-
-        for (var el : list.entrySet()) {
-            System.out.print(el.getKey() + " " + el.getValue() + "\n");
-        }
+        Sortlist();
     }
     public static void CalcCountRepeats() {
         for (String el : dataEmployees) {
@@ -36,6 +36,15 @@ public class task2 {
             else{
                 list.put(el, 1);
             }
+        }
+    }
+    
+    public static void Sortlist() {
+        List<Map.Entry<String, Integer>> list2 = list.entrySet().stream()
+        .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+        .collect(Collectors.toList());
+        for (var el : list2) {
+            System.out.print(el.getKey() + " " + el.getValue() + "\n");
         }
     }
 }
