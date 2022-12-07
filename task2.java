@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -38,7 +36,7 @@ public class task2 {
             }
         }
     }
-    
+
     public static void Sortlist() {
         List<Map.Entry<String, Integer>> list2 = list.entrySet().stream()
         .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
