@@ -14,6 +14,7 @@ public class task2 {
     static List<String> dataEmployees = new ArrayList<>();
 
     public static void main(String[] args) {
+        dataEmployees.add("Алексеев");
         dataEmployees.add("Иванов");
         dataEmployees.add("Сидоров");
         dataEmployees.add("Сидоров");
@@ -38,10 +39,10 @@ public class task2 {
     }
 
     public static void Sortlist() {
-        List<Map.Entry<String, Integer>> list2 = list.entrySet().stream()
+        List<Map.Entry<String, Integer>> SortList = list.entrySet().stream()
         .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
         .collect(Collectors.toList());
-        for (var el : list2) {
+        for (var el : SortList) {
             System.out.print(el.getKey() + " " + el.getValue() + "\n");
         }
     }
