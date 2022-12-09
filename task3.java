@@ -2,7 +2,7 @@
 
 public class task3 {
     public static void main(String[] args) {
-        int arr[] = { 10, 3, 76, 34, 23, 32, 17 };
+        int arr[] = {10, 3, 76, 34, 23, 88};
         System.out.println("Массив для сортировки");
         PrintArray(arr);
 
@@ -20,7 +20,7 @@ public class task3 {
         System.out.println();
     }
 
-    // сортировка массива
+    // Основная функция для сортировки массива заданного размера
     public static void HeapSort(int[] array) {
         int n = array.length;
 
@@ -41,26 +41,26 @@ public class task3 {
     }
 
     // Процедура для преобразования в двоичную кучу поддерева с корневым узлом i,
-    // что является
-    // индексом в arr[]. n - размер кучи
+    // что является индексом в arr[]. n - размер кучи
     public static void Heapify(int arr[], int n, int i) {
-        int largest = i; // Инициализируем наибольший элемент как корень
-        int l = 2 * i + 1; // левый = 2*i + 1
-        int r = 2 * i + 2; // правый = 2*i + 2
+        int largest = i; // Инициализируем наибольший элемент как корень / родительский узел
+        int left = 2 * i + 1; // левый дочерний = 2*i + 1
+        int right = 2 * i + 2; // правый правый = 2*i + 2
 
-        // Если левый дочерний элемент больше корня
-        if (l < n && arr[l] > arr[largest])
-            largest = l;
-        // Если правый дочерний элемент больше, чем самый большой элемент на данный
-        // момент
-        if (r < n && arr[r] > arr[largest])
-            largest = r;
-        // Если самый большой элемент не корень
+        // Проверяем существует ли левый дочерний элемент больший, чем корень
+        if (left < n && arr[left] > arr[largest])
+            largest = left;
+        // Проверяем существует ли правый дочерний элемент больший, чем корень
+        if (right < n && arr[right] > arr[largest])
+            largest = right;
+        // Если самый большой элемент не корень, заменяем корень поменять местами с потомком, 
+        // имеющим большее значение
         if (largest != i) {
             int swap = arr[i];
             arr[i] = arr[largest];
             arr[largest] = swap;
             // Рекурсивно преобразуем в двоичную кучу затронутое поддерево
+            // вызов heapify для дочернего элемента
             Heapify(arr, n, largest);
         }
     }
